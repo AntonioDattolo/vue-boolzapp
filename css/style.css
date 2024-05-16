@@ -30,6 +30,12 @@
 .focus{
     background-color: lightgray;
 }
-.notify.app{
+.notifyApp{
     background-color: rgb(58, 205, 250);
+}
+.chat{
+    height: 80%;
+}
+.h-10{
+    height: 10%;
 }

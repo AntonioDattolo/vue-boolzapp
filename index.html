@@ -15,16 +15,50 @@
         <main class="mainApp d-flex">
             <!-- sezione delle chat -->
             <section class="col-4 debug">
-                <div class="col-12 debug h-25 focus">PROFILO</div>
-                <div class="col-12 debug h-25 notifyApp">NOTIFICHE+CERCA</div>
-                <div class="col-12 debug h-50">ELENCO CHAT</div>
+                <div class="col-12 debug h-10 focus d-flex p-1">
+                    <img class="col-2 rounded-circle" src="https://i.pravatar.cc/50" alt="">
+                    <h5 class="col-4 px-1">Pinco pallo</h5>
+                    <i class="col-2"></i>
+                    <i class="col-2"></i>
+                    <i class="col-2"></i>
+                </div>
+                <div class="col-12 debug h-10 d-flex notifyApp">
+                        <img class="col-2 rounded-circle p-1" src="https://i.pravatar.cc/50" alt="">
+                        <div class="col-10 px-1">
+                            <h5>Ricevi notifiche di nuovi messaggi</h5>
+                            <a href="#">Attiva notifiche desktop</a>
+                            
+                        </div>
+                </div>
+                <div class="col-12 debug chat d-flex align-content-start  flex-wrap overflow-y-scroll p-1 w-100 chat ">
+                    <div class="col-12">
+                        <input class="w-100" type="text">
+                    </div>
+                    <div class="col-12 d-flex flex-wrap align-self-start h-10 ">
+                        <img class="col-2 rounded-circle px-2 py-1" src="https://i.pravatar.cc/50" alt="">
+                        <div class="col-8 px-1">
+                            <h5>Pinco pallo</h5>
+                            <h6>Ultimo accesso oggi alle</h6>  
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- sezione chat aperta(on focus) -->
             <section class="col-8 debug">
-                <div class="w-100 h-100">
+                <div class="w-100 h-100 d-flex flex-wrap">
                 
-                    <div class="col-12 debug h-25 focus">NOME CONTATTO</div>
-                    <div class="col-12 debug h-50  ">
+                    <div class="col-12 debug focus d-flex justify-self-start h-10">
+                        <img class="col-1 rounded-circle p-1" src="https://i.pravatar.cc/50" alt="">
+                        <div class="col-4 px-1">
+                            <h5>Pinco pallo</h5>
+                            <h6>Ultimo accesso oggi alle</h6>
+                            
+                        </div>
+                        <i class="col-2"></i>
+                        <i class="col-2"></i>
+                        <i class="col-2"></i>
+                    </div>
+                    <div class="col-12 debug overflow-y-scroll chat">
                         <div class="d-flex justify-content-end">
                             <span class="ric col-4">messaggio</span>
                         </div>
@@ -32,7 +66,11 @@
                             <span class="send col-4">messaggio</span>
                         </div>
                     </div>
-                    <div class="col-12 w-100 debug h-25 focus">INPUT TYPE TEXT</div>
+                    <div class="col-12 w-100 debug focus align-self-end d-flex justify-content-around p-3 h-10">
+                        <span class="">aaa</span>
+                        <input  class="w-75" type="text">
+                        <span class="">aaa</span>
+                    </div>
                 
                 </div>
 
