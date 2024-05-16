@@ -39,3 +39,14 @@
 .h-10{
     height: 10%;
 }
+.fa-solid{
+    font-size: 20px;
+    line-height: 30px;
+}
+.fa-bell-slash{
+    line-height: 60px;
+    text-align: center;
+    font-size: 40px;
+    background-color: white;
+    color: rgb(58, 205, 250); 
+}

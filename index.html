@@ -15,30 +15,32 @@
         <main class="mainApp d-flex">
             <!-- sezione delle chat -->
             <section class="col-4 debug">
-                <div class="col-12 debug h-10 focus d-flex p-1">
+                <div class="col-12 debug h-10 focus d-flex p-1 ">
                     <img class="col-2 rounded-circle" src="https://i.pravatar.cc/50" alt="">
-                    <h5 class="col-4 px-1">Pinco pallo</h5>
-                    <i class="col-2"></i>
-                    <i class="col-2"></i>
-                    <i class="col-2"></i>
+                    <h5 class="col-6 p-3">Pinco pallo</h5>
+                    <div class="col-4 p-3 px-4 d-flex justify-self-end text-end align-content-center">
+                        <i class="fa-solid fa-circle-notch col-2 mx-2"></i>
+                        <i class="fa-solid fa-message col-2 mx-2"></i>
+                        <i class="fa-solid fa-ellipsis-vertical col-2 mx-0"></i>
+                    </div>
                 </div>
-                <div class="col-12 debug h-10 d-flex notifyApp">
-                        <img class="col-2 rounded-circle p-1" src="https://i.pravatar.cc/50" alt="">
+                <div class="col-12 debug p-2 h-10 d-flex notifyApp">
+                         <i class="fa-solid fa-bell-slash col-2 rounded-circle p-1"></i>
                         <div class="col-10 px-1">
                             <h5>Ricevi notifiche di nuovi messaggi</h5>
                             <a href="#">Attiva notifiche desktop</a>
                             
-                        </div>
+                        </div> 
                 </div>
                 <div class="col-12 debug chat d-flex align-content-start  flex-wrap overflow-y-scroll p-1 w-100 chat ">
                     <div class="col-12">
                         <input class="w-100" type="text">
                     </div>
-                    <div class="col-12 d-flex flex-wrap align-self-start h-10 ">
-                        <img class="col-2 rounded-circle px-2 py-1" src="https://i.pravatar.cc/50" alt="">
-                        <div class="col-8 px-1">
-                            <h5>Pinco pallo</h5>
-                            <h6>Ultimo accesso oggi alle</h6>  
+                    <div v-for="option,i in contacts" class="col-12 d-flex flex-wrap align-self-start h-10 ">
+                        <img class="col-2 rounded-circle px-2 py-1" :src="option.avatar" alt="">
+                        <div class="col-10 px-1">
+                            <h5>{{option.name}}</h5>
+                            <h6 v-model="mex">{{option.messages[0].message}}</h6>  
                         </div>
                     </div>
                 </div>
@@ -47,29 +49,33 @@
             <section class="col-8 debug">
                 <div class="w-100 h-100 d-flex flex-wrap">
                 
-                    <div class="col-12 debug focus d-flex justify-self-start h-10">
+                    <div class="col-12 debug focus d-flex h-10">
                         <img class="col-1 rounded-circle p-1" src="https://i.pravatar.cc/50" alt="">
-                        <div class="col-4 px-1">
+                        <div class="col-7 px-1">
                             <h5>Pinco pallo</h5>
                             <h6>Ultimo accesso oggi alle</h6>
                             
                         </div>
-                        <i class="col-2"></i>
-                        <i class="col-2"></i>
-                        <i class="col-2"></i>
+                        <div class="col-4 p-3 px-4 d-flex justify-self-end justify-content-end text-end">
+
+                            <i class="fa-solid fa-magnifying-glass col-2 p-2 mx-1"></i>
+                            <i class="fa-solid fa-paperclip col-2 p-2 mx-1"></i>
+                            <i class="fa-solid fa-ellipsis-vertical col-2 p-2 mx-1"></i>
+                        </div>
+                        
                     </div>
                     <div class="col-12 debug overflow-y-scroll chat">
                         <div class="d-flex justify-content-end">
-                            <span class="ric col-4">messaggio</span>
+                            <span class="ric col-4">{{mex}}</span>
                         </div>
                         <div class="d-flex justify-content-start">
-                            <span class="send col-4">messaggio</span>
+                            <span class="send col-4">{{mex}}</span>
                         </div>
                     </div>
                     <div class="col-12 w-100 debug focus align-self-end d-flex justify-content-around p-3 h-10">
-                        <span class="">aaa</span>
+                        <i class="fa-regular fa-face-smile"></i>
                         <input  class="w-75" type="text">
-                        <span class="">aaa</span>
+                        <i class="fa-solid fa-microphone"></i>
                     </div>
                 
                 </div>
