@@ -170,6 +170,8 @@ const myConfig = {
 			
 			view: 0,
 			sent : [],
+			searchBar : "",
+			sideBar : document.getElementById("sidebar")
 			
 			
 		}
@@ -190,7 +192,7 @@ const myConfig = {
 			if(item == 'sent'){
 				return "send text-start" 
 			}else{
-				return "ric text-end offset-11"
+				return "ric text-end col-2 offset-10"
 			}
 		},
 		chose(index){
@@ -215,6 +217,34 @@ const myConfig = {
 			console.log(this.contacts)
 			this.sent = ""
 		},
+		search(item){
+			for(x=0; x < this.contacts.length ;x++){
+			array = this.contacts[x].name
+			if(item == array ){
+				console.log(array)
+				console.log("yes")
+				console.log(this.contacts[x].name) 
+				return `${this.contacts[x].name}`
+			}else{
+				return "no"
+				console.log("no")
+				
+			}
+			
+		}},
+
+			// 
+				
+			// 	if(this.contacts[x].name == element){
+			// 		console.log("yes")
+			// 	}else{
+			// 		console.log("no")
+			// 	}
+			// }
+			
+
+
+		
 		
 		
 	
