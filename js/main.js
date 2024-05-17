@@ -168,11 +168,34 @@ const myConfig = {
 					],
 				}
 			],
-			mex : null
 			
+			view: 0
 		}
 	},
 	methods: {
+		 status(item,i) {
+		 	if(item == "received" ){
+		 		item = this.contacts.messages[i]
+		 		console.log("item")
+		 		return item[i].message[i]
+			} else {
+		
+				return ""
+			}
+
+		 },
+		check(item){
+			if(item == 'sent'){
+				return "send text-start"
+			}else{
+				return "ric col-3 offset-9 "
+			}
+		},
+		chose(index){
+			this.view = index	
+			console.log(index)
+		}
+	
 		
 	},
 	mounted(){
