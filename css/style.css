@@ -3,19 +3,12 @@
     border: 2px solid red;
 }
 .send{
-    background-color: rgb(139, 139, 141);
-    height: 50px;
+    background-color: rgb(209, 209, 209);
     padding: 0.4rem 0.3rem ;
-   
-    
 }
 .ric{
     background-color: lightgreen;
-    height: 50px;
     padding: 0.4rem 0.3rem ;
-    
-    
-
 }
 /* CLASSI ESTETICHE */
 .myBg{
@@ -39,21 +32,34 @@
 }
 .chat{
     height:80% ;
-    overflow:scroll;
+    overflow:hidden;
     
+}
+.aka{
+    
+    background: repeat center url("../img/mine.jpg"); 
+    background-attachment: fixed;
 }
 .h-10{
     height: 10%;
 }
-.fa-solid{
-    font-size: 20px;
-    line-height: 30px;
+.fa-solid, .fa-regular{
+    font-size: 35px;
+    line-height: 25px;
+    padding: 2rem;
 }
 .fa-bell-slash{
-    line-height: 60px;
+    line-height: 75px;
     text-align: center;
     font-size: 40px;
     background-color: white;
     color: rgb(58, 205, 250); 
+}
+img{
+    object-fit: cover;
+}
+.opened{
+    background-color: rgb(58, 205, 250);
+    border-radius: 17px;
 }
 

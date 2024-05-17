@@ -1,14 +1,13 @@
 const { createApp } = Vue
 
 const myConfig = {
-	
 	data() {
 		
 		return {
 			contacts: [
 				{
 					name: 'Michele',
-					avatar:  'https://i.pravatar.cc/50',
+					avatar:  './img/avatar_1.jpg',
 					visible: true,
 					messages: [
 						{
@@ -30,7 +29,7 @@ const myConfig = {
 				},
 				{
 					name: 'Fabio',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_2.jpg',
 					visible: true,
 					messages: [
 						{
@@ -52,7 +51,7 @@ const myConfig = {
 				},
 				{
 					name: 'Samuele',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_3.jpg',
 					visible: true,
 					messages: [
 						{
@@ -74,7 +73,7 @@ const myConfig = {
 				},
 				{
 					name: 'Alessandro B.',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_4.jpg',
 					visible: true,
 					messages: [
 						{
@@ -91,7 +90,7 @@ const myConfig = {
 				},
 				{
 					name: 'Alessandro L.',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_5.jpg',
 					visible: true,
 					messages: [
 						{
@@ -108,7 +107,7 @@ const myConfig = {
 				},
 				{
 					name: 'Claudia',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_6.jpg',
 					visible: true,
 					messages: [
 						{
@@ -130,7 +129,7 @@ const myConfig = {
 				},
 				{
 					name: 'Federico',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_7.jpg',
 					visible: true,
 					messages: [
 						{
@@ -147,7 +146,7 @@ const myConfig = {
 				},
 				{
 					name: 'Davide',
-					avatar: 'https://i.pravatar.cc/50',
+					avatar: './img/avatar_8.jpg',
 					visible: true,
 					messages: [
 						{
@@ -169,7 +168,10 @@ const myConfig = {
 				}
 			],
 			
-			view: 0
+			view: 0,
+			sent : [],
+			
+			
 		}
 	},
 	methods: {
@@ -186,15 +188,35 @@ const myConfig = {
 		 },
 		check(item){
 			if(item == 'sent'){
-				return "send text-start"
+				return "send text-start" 
 			}else{
-				return "ric col-3 offset-9 "
+				return "ric text-end offset-11"
 			}
 		},
 		chose(index){
-			this.view = index	
+			this.view = index
 			console.log(index)
-		}
+			return "opened"	
+		},
+		opened(index){
+			if(index == this.view)
+			return "opened"
+		},
+		 lastElement(array){
+		 	const last = array.length - 1
+		 	return array[last]
+		},
+		addMsg(msg,index){
+			console.log("cliccato")
+		 	let newMsg = new Object({date: "\\", message : msg, status :"received"})
+			let robot = new Object({date: "\\", message : "OKK!!", status :"sent"})
+			this.contacts[index].messages.push(newMsg)
+			this.contacts[index].messages.push(robot)
+			console.log(this.contacts)
+			this.sent = ""
+		},
+		
+		
 	
 		
 	},
