@@ -12,6 +12,7 @@
 </head>
 <body >
     <div id="app" class="myBg">
+        {{splitDate(this.view)}}
         <main class="mainApp d-flex ">
             <!-- sezione delle chat -->
             <section class="col-sm-4">
@@ -36,8 +37,8 @@
                         </div> 
                 </div>
                 <div class="col-sm-12 d-flex flex-wrap chat px-1 w-100">
-                    <div class="col-12 mt-2">
-                        <div class="input-group w-100">
+                    <div class="col-12 mt-2 h-10">
+                        <div class="input-group w-100 ">
                             <span class="input-group-text" id="inputGroup-sizing-default">
                                 <i class="fa-solid fa-magnifying-glass col-1 p-2 mx-2"></i>
                             </span>
@@ -46,16 +47,47 @@
                     </div>
                    
                     
-                    <div :class="search()" class="col-12 h-auto myOverFlow">
+                    <div  class="col-12 h-auto myOverFlow">
                       
+                        <div v-for="person,i in contacts" @click="chose(i)" class="col-12 d-flex flex-wrap align-self-start chat border-bottom h-10 w-100 " :class="opened(i)"  >
+                            <div class="col-2 p-2">
+                                <img class="rounded-circle p-3 py-2 " :src="person.avatar" alt="">
+                            </div>
+                            <div class="py-1 col-10" >
+                                <h5> {{person.name}}</h5>
+                                
+                                    <div class="d-flex">
+
+                                        <h6 class="d-inline col-10">{{lastElement(person.messages).message}}</h6>
+                                        
+                                        <template v-for="msg,i in person.messages" >
+                                            <span class="col-2" v-if="msg.status == `received` && i >= this.time_date_received.length - 2 "> {{this.time_date_received[this.time_date_received.length-1].time}}</span>
+                                        </template>  
+                                    </div>                                    
+                                
+                            </div>
+                            
+                        </div>
+
+                        <!-- aggiunta copia contatti chat per testare overflow -->
                         <div v-for="person,i in contacts" @click="chose(i)" class="col-12 d-flex flex-wrap align-self-start chat border-bottom h-10 w-100" :class="opened(i)"  >
                             <div class="col-2 p-2">
                                 <img class="rounded-circle p-3 py-2 " :src="person.avatar" alt="">
                             </div>
                             <div class="py-1 col-10" >
                                 <h5> {{person.name}}</h5>
-                                <h6>{{lastElement(person.messages).message}}</h6>
+                                <div class="d-flex">
+
+                                    <h6 class="d-inline col-10">{{lastElement(person.messages).message}}</h6>
+                                    
+                                    <template v-for="msg,i in person.messages" >
+                                        <span class="col-2" v-if="msg.status == `received` && i >= this.time_date_received.length - 2 "> {{this.time_date_received[this.time_date_received.length-1].time}}</span>
+                                    </template>  
+                                </div>     
+                                
+                                                            
                             </div>
+                            
                         </div>
                     </div>
                     
@@ -74,10 +106,10 @@
                                         <h4 class="" >
                                             {{person.name}}
                                         </h4>
-                                        {{splitDate(this.view)}}
+                                        
                                         
                                         <template v-for="msg,i in person.messages" >
-                                            <p v-if="msg.status == `received` && i >= 1 ">Ultimo accesso oggi alle {{this.time_date_received[i].time}}</p>
+                                            <p v-if="msg.status == `received` && i >= this.time_date_received.length - 2 ">Ultimo accesso oggi alle {{this.time_date_received[i].time}}</p>
                                         </template>
                                         
                                     </div>

@@ -212,8 +212,8 @@ const myConfig = {
 		},
 		addMsg(msg,index){
 			console.log("cliccato")
-		 	let newMsg = new Object({date: "\\", message : msg, status :"received"})
-			let robot = new Object({date: "\\", message : "OKK!!", status :"sent"})
+		 	let newMsg = new Object({date: "10/01/2020 17:51:00", message : msg, status :"sent"})
+			let robot = new Object({date: "10/01/2020 17:53:00", message : "OKK!!", status :"received"})
 			this.contacts[index].messages.push(newMsg)
 			this.contacts[index].messages.push(robot)
 			console.log(this.contacts)

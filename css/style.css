@@ -36,11 +36,13 @@
 }
 
 .myOverFlow{
-    overflow-y: scroll;
+    overflow-y: auto;
+    max-height: 82%;
+    
 }
-.myOverFlow::-webkit-scrollbar {
+/* .myOverFlow::-webkit-scrollbar {
     display: none;
-}
+} */
 .aka{
     
     background: repeat center url("../img/mine.jpg"); 
