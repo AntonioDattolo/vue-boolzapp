@@ -75,12 +75,14 @@
                                             {{person.name}}
                                         </h4>
                                         {{splitDate(this.view)}}
-                                        <!-- <p>Ultimo accesso oggi alle {{lastElement(person.messages).date}}</p> -->
-                                        <p>Ultimo accesso oggi alle {{this.time_date_received[this.time_date_received.length-1].time}}</p>
+                                        
+                                        <template v-for="msg,i in person.messages" >
+                                            <p v-if="msg.status == `received` && i >= 1 ">Ultimo accesso oggi alle {{this.time_date_received[i].time}}</p>
+                                        </template>
+                                        
                                     </div>
                                     
                                     <div class="col-sm 4 d-flex justify-content-end align-items-center p-2">
-                    
                                         <i class="fa-solid fa-magnifying-glass col-sm-1 p-2 mx-2"></i>
                                         <i class="fa-solid fa-paperclip col-sm-1 p-2 mx-2"></i>
                                         <i class="fa-solid fa-ellipsis-vertical col-sm-1 p-2 mx-2"></i>
@@ -98,8 +100,8 @@
                                         <span v:model={{i}}>
                                             {{ msg.message}}
                                             <br>
-                                            <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received'">{{this.time_date_received[this.time_date_received.length-1].time}}</span>
-                                            <span style="font-size: 10px;text-align: right;" v-if="msg.status == 'sent'">{{this.time_date_sent[this.time_date_sent.length-1].time}}</span>  
+                                            <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received' ">{{this.time_date_received[i].time}}</span>
+                                            <span style="font-size: 10px;text-align: right;" v-if="msg.status == 'sent' ">{{this.time_date_received[i].time}}</span>  
                                         </span>
                                     </div>
                                 </div>

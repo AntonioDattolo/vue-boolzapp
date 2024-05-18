@@ -236,29 +236,45 @@ const myConfig = {
 		splitDate(view){
 			this.time_date_sent = []
 			this.time_date_received = []
+			// for(x=0; x < this.contacts[this.view].messages.length; x++){
+			// 	let element = this.contacts[this.view].messages[x].date
+			// 	if(this.contacts[this.view].messages[x].status == 'received'){
+			// 		console.log(element)
+			// 		let day_hour = element.slice(0)
+			// 		console.log("questo è slice" , day_hour)
+			// 		let splitSlice = day_hour.split(" ")
+			// 		let day = splitSlice[0]
+			// 		let hour = splitSlice[1]
+			// 		this.time_date_received.push(new Object({date : splitSlice[0], time : splitSlice[1] } ))
+			// 		console.log("questo è il push dei ricevuti" , this.time_date_received)
+			// 	}else{
+			// 		console.log(element)
+			// 		let day_hour = element.slice(0)
+			// 		console.log("questo è slice" , day_hour)
+			// 		let splitSlice = day_hour.split(" ")
+			// 		let day = splitSlice[0]
+			// 		let hour = splitSlice[1]
+			// 		this.time_date_sent.push(new Object({date : splitSlice[0], time : splitSlice[1]} ))
+			// 		console.log("questo è il push degli inviati" , this.time_date_sent)
+			// 	}
+			// }
 			for(x=0; x < this.contacts[this.view].messages.length; x++){
 				let element = this.contacts[this.view].messages[x].date
-				if(this.contacts[this.view].messages[x].status == 'received'){
+				let status = this.contacts[this.view].messages[x].status
+				
 					console.log(element)
 					let day_hour = element.slice(0)
 					console.log("questo è slice" , day_hour)
 					let splitSlice = day_hour.split(" ")
 					let day = splitSlice[0]
 					let hour = splitSlice[1]
-					this.time_date_received.push(new Object({date : splitSlice[0], time : splitSlice[1]} ))
+					this.time_date_received.push(new Object({date : splitSlice[0], time : splitSlice[1] , status : status} ))
 					console.log("questo è il push dei ricevuti" , this.time_date_received)
-				}else{
-					console.log(element)
-					let day_hour = element.slice(0)
-					console.log("questo è slice" , day_hour)
-					let splitSlice = day_hour.split(" ")
-					let day = splitSlice[0]
-					let hour = splitSlice[1]
-					this.time_date_sent.push(new Object({date : splitSlice[0], time : splitSlice[1]} ))
-					console.log("questo è il push degli inviati" , this.time_date_sent)
 				}
-			}
-		}
+			},
+			
+
+		
 
 
 
