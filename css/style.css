@@ -23,6 +23,7 @@
     margin: 0 auto; 
     width: 85%;
     background-color: whitesmoke;
+    
 }
 .focus{
     background-color: lightgray;
@@ -32,8 +33,13 @@
 }
 .chat{
     height:80% ;
-    overflow:hidden;
-    
+}
+
+.myOverFlow{
+    overflow-y: scroll;
+}
+.myOverFlow::-webkit-scrollbar {
+    display: none;
 }
 .aka{
     
@@ -44,19 +50,22 @@
     height: 10%;
 }
 .fa-solid, .fa-regular{
-    font-size: 35px;
-    line-height: 25px;
+    font-size: 18px;
+    line-height: 20px;
     padding: 2rem;
 }
 .fa-bell-slash{
-    line-height: 75px;
+    height: 50px;
+    width: 50px;
+    line-height: 45px;
     text-align: center;
-    font-size: 40px;
+    font-size: 27px;
     background-color: white;
     color: rgb(58, 205, 250); 
 }
 img{
-    object-fit: cover;
+    width: 100%;
+    object-fit: contain;
 }
 .opened{
     background-color: rgb(58, 205, 250);
