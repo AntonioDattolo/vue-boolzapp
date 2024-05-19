@@ -3,58 +3,59 @@
     border: 2px solid red;
 }
 .send{
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(144, 144, 144);
     padding: 0.4rem 0.3rem ;
 }
 .ric{
     background-color: lightgreen;
     padding: 0.4rem 0.3rem ;
+    white-space-collapse: nowrap;
 }
 /* CLASSI ESTETICHE */
 .myBg{
     background: rgb(20,219,144);
-    background: linear-gradient(180deg, rgba(20,219,144,1) 0%, rgba(20,219,144,1) 20%, rgba(202,202,202,1) 20%, rgba(255,255,255,1) 25%);
-    height: 100vh;
+    background: linear-gradient(180deg, rgba(20,219,144,1) 0%, rgba(20,219,144,1) 20%, rgb(85, 85, 85) 20%, rgba(17,17,17,1) 25%);
+    height: 100vh; 
     width: 100%;
-    padding: 3rem;
+    padding: 4vh;
 }
 .mainApp{
-    height: calc(100vh - 6rem);
+    height: calc(100vh - 8vh);
     margin: 0 auto; 
-    width: 85%;
-    background-color: whitesmoke;
-    
+    /* width: 85%; */
+    /* background-color: whitesmoke; */
+    background-color: rgb(36, 36, 36);
+    color: rgb(238, 238, 238);
 }
 .focus{
-    background-color: lightgray;
+    background-color: rgb(144, 144, 144);
 }
 .notifyApp{
     background-color: rgb(58, 205, 250);
 }
 .chat{
-    height:80% ;
+    height:72vh ;
 }
-
 .myOverFlow{
     overflow-y: auto;
-    max-height: 82%;
-    
+    max-height: 80%; 
 }
-/* .myOverFlow::-webkit-scrollbar {
+.myOverFlow::-webkit-scrollbar {
     display: none;
-} */
-.aka{
-    
-    background: repeat center url("../img/mine.jpg"); 
-    background-attachment: fixed;
+} 
+.chatBg{
+    background: repeat center url("../img/mine.jpg") ; 
+    height: 72vh
+}
+.myCard{
+    height: 10vh;  
 }
 .h-10{
     height: 10%;
 }
 .fa-solid, .fa-regular{
-    font-size: 18px;
-    line-height: 20px;
-    padding: 2rem;
+    font-size: 30px;
+    line-height: 20px; 
 }
 .fa-bell-slash{
     height: 50px;
@@ -66,11 +67,193 @@
     color: rgb(58, 205, 250); 
 }
 img{
-    width: 100%;
-    object-fit: contain;
+    height: 7.5vh;
+    width: 7.5vh;
 }
 .opened{
     background-color: rgb(58, 205, 250);
     border-radius: 17px;
 }
+span{
+    font-size:20px;
+}
+@media screen and (min-width: 992px){
+    .under990{
+        font-size: 13px;
+       
+    }
 
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .myBg{
+        
+        
+        padding: 0;
+        
+    }
+    .mainApp{
+        height:100vh ;
+        flex-wrap: nowrap; 
+    }
+    .chatBg{
+        width: 100%;
+        height: 80vh;
+    }
+    .chat{
+        
+         height:80% ; 
+        /* da modificare */
+    }
+    .notifyApp{
+        font-size: 10px;
+    }
+    .fa-solid, .fa-regular{
+        font-size: 12px;
+        line-height: 20px;
+        padding: 0;
+    }
+    .fa-bell-slash{
+        height: 30px;
+        width: 30px;
+        line-height: 25px;
+       
+        font-size: 15px;
+      
+    }
+    
+    .under990{
+        font-size: 11px;
+        white-space: wrap;
+            
+    }
+    
+  
+}
+@media screen and (max-width: 768px) {
+    .myBg{
+        
+        
+        padding: 0;
+        
+    }
+    .mainApp{
+        height:100vh ;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+       
+        flex-wrap: nowrap; 
+    }
+    .chatBg{
+        height: 80vh;
+    }
+    .chat{
+        
+         height:90vh ; 
+        /* da modificare */
+    }
+    
+    .fa-solid, .fa-regular{
+        font-size: 12px;
+        line-height: 20px;
+        padding: 0;
+    }
+    .fa-bell-slash{
+        height: 30px;
+        width: 30px;
+        line-height: 25px;
+       
+        font-size: 15px;
+      
+    }
+    .under990{
+        
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 50%;
+    }
+    .under990{
+        font-size: 16px;
+       white-space: wrap;
+        
+    }
+  
+}
+@media screen and (max-width: 576px) {
+    /* body {
+      background-color: blue;
+    } */
+    .myBg{
+        
+        
+        padding: 0;
+        
+    }
+    .mainApp{
+        height:100vh ;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    .chat{
+        
+        height:100% ;
+        /* da modificare */
+    }
+    .myOverFlow{
+        overflow-y: auto;
+        /* max-height: 80%;  */
+    }
+    .myOverFlow::-webkit-scrollbar {
+        display: none;
+    } 
+    .chatBg{
+        background: repeat center url("../img/mine.jpg") ; 
+        height: 80vh;
+        
+    }
+    .myCard{
+        height: 10vh; 
+    }
+    .h-10{
+        height: 10%;
+    }
+    .fa-solid, .fa-regular{
+        font-size: 20px;
+        line-height: 20px; 
+    }
+    .under990{
+        font-size: 11px;
+       white-space: wrap;
+        
+    }
+    img{
+        height: 7.5vh;
+        width: 7.5vh;
+    }
+}
+/* @media screen and (max-height: 560px){
+    .myBg{
+      
+        height: 100vh; 
+        width: 100%;
+        
+    }
+    .mainApp{
+        height:100vh ;
+        margin: 0;
+    }
+    .notifyApp, .notifyApp i{
+        padding: 0;
+        font-size: 10px;
+    }
+    .fa-bell-slash{
+        height: 30px;
+        width: 30px;
+        line-height: 25px;
+    }
+    span{
+        font-size:10px;
+    }
+} */

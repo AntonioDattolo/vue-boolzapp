@@ -167,15 +167,12 @@ const myConfig = {
 					],
 				}
 			],
-			
 			view: 0,
 			sent : [],
-			searchBar : "",
+			search : '',
 			sideBar : document.getElementById("sidebar"),
 			time_date_received :[],
 			time_date_sent :[]
-			
-			
 		}
 	},
 	methods: {
@@ -192,7 +189,7 @@ const myConfig = {
 		 },
 		check(item){
 			if(item == 'sent'){
-				return   "ric text-end col-2 offset-10"
+				return   "ric text-end offset-10 nowrap"
 			}else{
 				return "send text-start"
 			}
@@ -219,45 +216,9 @@ const myConfig = {
 			console.log(this.contacts)
 			this.sent = ""
 		},
-		search(item){
-			for(x=0; x < this.contacts.length ;x++){
-			array = this.contacts[x].name
-			if(item == array ){
-				console.log(array)
-				console.log("yes")
-				console.log(this.contacts[x].name) 
-				return `${this.contacts[x].name}`
-			}else{
-				return "no"
-				console.log("no")
-			}
-			
-		}},
 		splitDate(view){
 			this.time_date_sent = []
 			this.time_date_received = []
-			// for(x=0; x < this.contacts[this.view].messages.length; x++){
-			// 	let element = this.contacts[this.view].messages[x].date
-			// 	if(this.contacts[this.view].messages[x].status == 'received'){
-			// 		console.log(element)
-			// 		let day_hour = element.slice(0)
-			// 		console.log("questo è slice" , day_hour)
-			// 		let splitSlice = day_hour.split(" ")
-			// 		let day = splitSlice[0]
-			// 		let hour = splitSlice[1]
-			// 		this.time_date_received.push(new Object({date : splitSlice[0], time : splitSlice[1] } ))
-			// 		console.log("questo è il push dei ricevuti" , this.time_date_received)
-			// 	}else{
-			// 		console.log(element)
-			// 		let day_hour = element.slice(0)
-			// 		console.log("questo è slice" , day_hour)
-			// 		let splitSlice = day_hour.split(" ")
-			// 		let day = splitSlice[0]
-			// 		let hour = splitSlice[1]
-			// 		this.time_date_sent.push(new Object({date : splitSlice[0], time : splitSlice[1]} ))
-			// 		console.log("questo è il push degli inviati" , this.time_date_sent)
-			// 	}
-			// }
 			for(x=0; x < this.contacts[this.view].messages.length; x++){
 				let element = this.contacts[this.view].messages[x].date
 				let status = this.contacts[this.view].messages[x].status
@@ -273,6 +234,7 @@ const myConfig = {
 				}
 			},
 			
+			
 
 		
 
@@ -284,10 +246,16 @@ const myConfig = {
 	
 		
 	},
+	computed :{
+		filteredChat : function(){
+			return this.contacts.filter((contacts)=>{
+				return contacts.name.match(this.search)
+			})
+		}
+
+	},
 	mounted(){
 		window.vue = this
-		
-		
 	}
 };
 

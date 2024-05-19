@@ -13,147 +13,145 @@
 <body >
     <div id="app" class="myBg">
         {{splitDate(this.view)}}
-        <main class="mainApp d-flex ">
+        <main class="mainApp d-sm-flex ">
             <!-- sezione delle chat -->
-            <section class="col-sm-4">
-                <div class="col-sm-12  h-10 focus d-flex p-1 ">
-                    <div class="col-2">
-                        <img class="rounded-circle p-2" src="./img/avatar_io.jpg" alt="">
+            <section class="col-sm-12 col-md-5 col-xxl-4 col-12 ">
+                <div class=" col-12 focus d-flex myCard align-items-center">
+                    <div class="col-2 p-1 ">
+                        <img class="rounded-circle p-1 " src="./img/avatar_io.jpg" alt="">
                     </div>
-                    <h1 class="col-6 p-3">Moons
+                    <span class="col-6 p-2 ">Moons
                     
-                    </h1>
-                    <div class="col-4 p-1 px-4 d-flex justify-self-end text-end justify-content-end align-content-center">
-                        <i class="fa-solid fa-circle-notch col-sm-2 "></i>
-                        <i class="fa-solid fa-message col-sm-2 "></i>
-                        <i class="fa-solid fa-ellipsis-vertical col-sm-2 "></i>
+                    </span>
+                    <div class="col-4 d-flex justify-self-end text-end ">
+                        <i class="fa-solid fa-circle-notch  col-2 mx-2"></i>
+                        <i class="fa-solid fa-message  col-2 mx-2"></i>
+                        <i class="fa-solid fa-ellipsis-vertical  col-2 mx-2"></i>
                     </div>
                 </div>
-                <div class="col-sm-12  p-3 h-10 d-flex notifyApp">
-                         <i class="fa-solid fa-bell-slash col-sm-2 rounded-circle p-1"></i>
-                        <div class="col-12 col-sm-10 px-3">
-                            <h5 class="p-1">Ricevi notifiche di nuovi messaggi</h5>
-                            <a class="p-1" href="#">Attiva notifiche desktop</a>
+                <div class=" col-12 p-1 d-md-flex d-none notifyApp myCard">
+                         <i class="fa-solid fa-bell-slash mt-md-3 col-2 rounded-circle p-1"></i>
+                        <div class="col-12  col-10 px-3">
+                            <span class="p-1 p-md-0 d-block">Ricevi notifiche di nuovi messaggi</span>
+                            <a class="p-1 p-md-0" href="#">Attiva notifiche desktop</a>
                         </div> 
                 </div>
-                <div class="col-sm-12 d-flex flex-wrap chat px-1 w-100">
-                    <div class="col-12 mt-2 h-10">
-                        <div class="input-group w-100 ">
-                            <span class="input-group-text" id="inputGroup-sizing-default">
+                <div class=" col-12 d-flex flex-wrap chat p-1 w-100 align-items-center">
+                    <div class="col-12 p-1">
+                        <!-- <div class="input-group input-group-sm mb-3 ">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">
                                 <i class="fa-solid fa-magnifying-glass col-1 p-2 mx-2"></i>
                             </span>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="searchBar" @keyup.enter="search(searchBar)">
-                        </div>
+                            <input type="text" class="form-control" aria-label="Searchbar" aria-describedby="searchbar" v-model="searchBar" @keyup.enter="search(searchBar)">
+                        </div> -->
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="search" onKeyUp="this.value=this.value.substr(0,1).toUpperCase()+this.value.substr(1,this.value.length).toLowerCase();">
+                          </div>
                     </div>
                    
                     
-                    <div  class="col-12 h-auto myOverFlow">
+                    <div  class="col-12 myOverFlow chat ">
                       
-                        <div v-for="person,i in contacts" @click="chose(i)" class="col-12 d-flex flex-wrap align-self-start chat border-bottom h-10 w-100 " :class="opened(i)"  >
-                            <div class="col-2 p-2">
-                                <img class="rounded-circle p-3 py-2 " :src="person.avatar" alt="">
+                        <div v-for="person,i in filteredChat" @click="chose(i)" class="col-12 d-flex flex-wrap align-self-start border-bottom w-100 myCard" :class="opened(i)"  >
+                            <div class="col-2 p-2 d-flex">
+                                <img class="rounded-circle" :src="person.avatar" alt="">
                             </div>
-                            <div class="py-1 col-10" >
-                                <h5> {{person.name}}</h5>
+                            <div class="py-lg-1 p-0 col-9 col-xxl-10" >
+                                <span class="mx-3"> {{person.name}}</span>
                                 
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-between mx-3">
 
-                                        <h6 class="d-inline col-10">{{lastElement(person.messages).message}}</h6>
+                                        <span class="d-inline col-9 col-lg-10 col-md-8  under990">{{lastElement(person.messages).message}}</span>
                                         
                                         <template v-for="msg,i in person.messages" >
-                                            <span class="col-2" v-if="msg.status == `received` && i >= this.time_date_received.length - 2 "> {{this.time_date_received[this.time_date_received.length-1].time}}</span>
-                                        </template>  
+                                            <span class="col-xxl-2 col-md-4 mx-md-2 mx-xxl-0 fs-6" v-if="msg.status == `received` && i <= this.time_date_received.length - 2 "> {{this.time_date_received[this.time_date_received.length -1 ].time}}</span>
+                                        </template>   
                                     </div>                                    
                                 
                             </div>
                             
                         </div>
 
-                        <!-- aggiunta copia contatti chat per testare overflow -->
-                        <div v-for="person,i in contacts" @click="chose(i)" class="col-12 d-flex flex-wrap align-self-start chat border-bottom h-10 w-100" :class="opened(i)"  >
-                            <div class="col-2 p-2">
-                                <img class="rounded-circle p-3 py-2 " :src="person.avatar" alt="">
-                            </div>
-                            <div class="py-1 col-10" >
-                                <h5> {{person.name}}</h5>
-                                <div class="d-flex">
-
-                                    <h6 class="d-inline col-10">{{lastElement(person.messages).message}}</h6>
-                                    
-                                    <template v-for="msg,i in person.messages" >
-                                        <span class="col-2" v-if="msg.status == `received` && i >= this.time_date_received.length - 2 "> {{this.time_date_received[this.time_date_received.length-1].time}}</span>
-                                    </template>  
-                                </div>     
-                                
-                                                            
-                            </div>
-                            
-                        </div>
+                  
                     </div>
                     
                 </div>
             </section>
-            <!-- sezione chat aperta(on focus) -->
-            <section class="col-sm-8  d-flex">
-                <div class="w-100 d-flex flex-wrap" >
-                    <div class="col-sm-12 focus d-flex h-10">
+            <!-- sezione chat aperta(on focus)  -->
+            <section class="col-sm-12 col-md-7 col-lg-7 col-xxl-8 rightSection d-none d-md-block">
+                <div class="w-100 " >
+                    <div class="focus d-flex myCard">
                         <template v-for="person,i in contacts">
-                            <template class="p-3 d-flex " v-if="i == view">
-                                <img class="col-sm-1 rounded-circle p-3" :src="person.avatar" alt="">
-                                <div class="col-sm-11 d-flex justify-content-between align-items-center  ">
-                                    <div>
+                            <template v-if="i == view">
+                                <div class="col-12 d-flex">
 
-                                        <h4 class="" >
-                                            {{person.name}}
-                                        </h4>
-                                        
-                                        
-                                        <template v-for="msg,i in person.messages" >
-                                            <p v-if="msg.status == `received` && i >= this.time_date_received.length - 2 ">Ultimo accesso oggi alle {{this.time_date_received[i].time}}</p>
-                                        </template>
+                                    <div class="col-xxl-1 col-3 d-flex justify-content-start align-items-center">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                        <img class="rounded-circle p-1" :src="person.avatar" alt="">
                                         
                                     </div>
-                                    
-                                    <div class="col-sm 4 d-flex justify-content-end align-items-center p-2">
-                                        <i class="fa-solid fa-magnifying-glass col-sm-1 p-2 mx-2"></i>
-                                        <i class="fa-solid fa-paperclip col-sm-1 p-2 mx-2"></i>
-                                        <i class="fa-solid fa-ellipsis-vertical col-sm-1 p-2 mx-2"></i>
+                                    <div class=" col-xxl-7 col-6 d-flex justify-content-start align-items-center ">
+                                        <div class="d-flex flex-wrap text-start px-1 ">
+                                            <span class="col-12 " >{{person.name}}</span>
+                                            <template v-for="msg,i in person.messages" >
+                                                <span class="col-12  under990" v-if="msg.status == `received` && i >= this.time_date_received.length - 2 ">Ultimo accesso oggi alle {{this.time_date_received[i].time}}</span>
+                                            </template>
+                                        </div>    
                                     </div>
+                                    <div class="col-xxl-4 col-3 d-flex justify-content-end align-items-center ">
+                                        <i class="fa-solid fa-magnifying-glass  col-1 p-2 mx-2"></i>
+                                        <i class="fa-solid fa-paperclip  col-1 p-2 mx-2"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical  col-1 p-2 mx-2"></i>
+                                    </div>
+
                                 </div>
                             </template>
                         </template>
                     </div>
 
-                    <section class=" chat w-100 aka">
-                        <div class=" " v-for="person,i in contacts">
+                    <section class=" w-100 chatBg myOverFlow ">
+                        <div class=" filter" v-for="person,i in contacts">
                             <div v-if="i == view">
                                 <div class="p-3 px-5 w-100 d-flex " v-for="msg,i in person.messages">
-                                    <div class="  rounded" :class="check(msg.status)"   >
-                                        <span v:model={{i}}>
-                                            {{ msg.message}}
-                                            <br>
-                                            <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received' ">{{this.time_date_received[i].time}}</span>
-                                            <span style="font-size: 10px;text-align: right;" v-if="msg.status == 'sent' ">{{this.time_date_received[i].time}}</span>  
-                                        </span>
-                                    </div>
+                                    
+                                    
+
+                                        <div class="  rounded" :class="check(msg.status)"   >
+                                            <span v:model={{i}}>
+                                                {{ msg.message}}
+                                                <br>
+                                                <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received' ">{{this.time_date_received[i].time}}</span>
+                                                <span style="font-size: 10px;text-align: right;" v-if="msg.status == 'sent' ">{{this.time_date_received[i].time}}</span>  
+                                            </span>
+                                        </div>
+                                    
                                 </div>
                             </div>
                         </div>
                         
                     </section>
 
-                    <div class="w-100 focus d-flex justify-content-around p-1 h-10">
-                        <div class="">
-                            <i class=" fa-regular fa-face-smile"></i>
+                    <div class="w-100 focus d-flex justify-content-between align-items-center myCard">
+                        <div class="p-2 col-2 d-flex justify-content-center">
+                            <span>
+                                <i class=" fa-regular fa-face-smile"></i>
+
+                            </span>
                         </div>
-                        <div class=" input-group mb-3 w-75 rounded d-flex">
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="sent">
-                                <span class="input-group-text col-sm-1 offeset notifyApp" id="inputGroup-sizing-default">
-                                <i class="fa-sharp fa-solid fa-paper-plane col-sm-1 p-1 " @click="addMsg(sent,view)"></i>
+                        <div class=" input-group mt-1 w-75 h-50 rounded d-flex">
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="sent">
+                            <span class="input-group-text  col-1  notifyApp d-flex justify-content-center" id="inputGroup-sizing-sm">
+                                <i class="fa-sharp fa-solid fa-paper-plane" @click="addMsg(sent,view)"></i>
                             </span> 
                         </div>
-                        <div class="">
-                            <i class="fa-solid fa-microphone"></i>
+                        <div class="p-2 col-2 d-flex justify-content-center" >
+                            <span>
+                                <i class="fa-solid fa-microphone"></i>
+
+                            </span>
                         </div>
                     </div>
                 
