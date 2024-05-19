@@ -170,9 +170,8 @@ const myConfig = {
 			view: 0,
 			sent : [],
 			search : '',
-			sideBar : document.getElementById("sidebar"),
 			time_date_received :[],
-			time_date_sent :[]
+			time_of : []
 		}
 	},
 	methods: {
@@ -197,7 +196,6 @@ const myConfig = {
 		chose(index){
 			this.view = index
 			console.log(index)
-			return "opened"	
 		},
 		opened(index){
 			if(index == this.view)
@@ -216,23 +214,54 @@ const myConfig = {
 			console.log(this.contacts)
 			this.sent = ""
 		},
-		splitDate(view){
-			this.time_date_sent = []
+		splitDate(){
 			this.time_date_received = []
-			for(x=0; x < this.contacts[this.view].messages.length; x++){
-				let element = this.contacts[this.view].messages[x].date
-				let status = this.contacts[this.view].messages[x].status
-				
+			// ciclo sull'array principale
+			for (i = 0; i < this.contacts.length; i++) {
+				let base = []
+				//ciclo su array di oggetti annidato
+				for (x = 0; x < this.contacts[i].messages.length; x++) {
+					let element = this.contacts[i].messages[x].date
+					let status = this.contacts[i].messages[x].status
 					console.log(element)
 					let day_hour = element.slice(0)
-					console.log("questo è slice" , day_hour)
+					console.log("questo è slice", day_hour)
 					let splitSlice = day_hour.split(" ")
+					console.log("questo è lo split dello slice", splitSlice)
 					let day = splitSlice[0]
-					let hour = splitSlice[1]
-					this.time_date_received.push(new Object({date : splitSlice[0], time : splitSlice[1] , status : status} ))
-					console.log("questo è il push dei ricevuti" , this.time_date_received)
+					let hourMinuteSecond = splitSlice[1]
+					let hourMinute = hourMinuteSecond.split(":")
+					console.log("questo è lo split dell'orario ", hourMinute)
+					base.push(new Object({ date: splitSlice[0], time: hourMinute[0] + ':' + hourMinute[1], status: status }))
 				}
-			},
+				this.time_date_received.push(base)
+				console.log("array finale", this.time_date_received)
+			}
+		},
+		splitTime() {
+			this.time_of = []
+
+			for (x = 0; x < this.contacts[this.view].messages.length; x++) {
+				let element = this.contacts[this.view].messages[x].date
+				let status = this.contacts[this.view].messages[x].status
+
+				console.log(element)
+				let day_hour = element.slice(0)
+				console.log("questo è slice", day_hour)
+				let splitSlice = day_hour.split(" ")
+				let day = splitSlice[0]
+				let hour = splitSlice[1]
+				let hourMinuteSecond = splitSlice[1]
+				let hourMinute = hourMinuteSecond.split(":")
+				this.time_of.push(new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status }))
+				console.log("questo è il push dei ricevuti", this.time_of)
+			}
+
+		},
+		active(){
+			console.log("cliccato")
+			return "d-block"
+		}
 			
 			
 
@@ -251,7 +280,7 @@ const myConfig = {
 			return this.contacts.filter((contacts)=>{
 				return contacts.name.match(this.search)
 			})
-		}
+		},
 
 	},
 	mounted(){

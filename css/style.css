@@ -1,238 +1,296 @@
 /* ************ CLASSI DI DEBUG */
-.debug{
+.debug {
     border: 2px solid red;
 }
-.send{
+
+.send {
     background-color: rgb(144, 144, 144);
-    padding: 0.4rem 0.3rem ;
+    padding: 0.4rem 0.3rem;
+
 }
-.ric{
+
+.ric {
     background-color: lightgreen;
-    padding: 0.4rem 0.3rem ;
+    padding: 0.4rem 0.3rem;
     white-space-collapse: nowrap;
+
 }
+
 /* CLASSI ESTETICHE */
-.myBg{
-    background: rgb(20,219,144);
-    background: linear-gradient(180deg, rgba(20,219,144,1) 0%, rgba(20,219,144,1) 20%, rgb(85, 85, 85) 20%, rgba(17,17,17,1) 25%);
-    height: 100vh; 
+.myBg {
+    background: rgb(20, 219, 144);
+    background: linear-gradient(180deg, rgba(20, 219, 144, 1) 0%, rgba(20, 219, 144, 1) 20%, rgb(85, 85, 85) 20%, rgba(17, 17, 17, 1) 25%);
+    height: 100vh;
     width: 100%;
     padding: 4vh;
 }
-.mainApp{
+
+.mainApp {
     height: calc(100vh - 8vh);
-    margin: 0 auto; 
+    margin: 0 auto;
     /* width: 85%; */
     /* background-color: whitesmoke; */
     background-color: rgb(36, 36, 36);
     color: rgb(238, 238, 238);
 }
-.focus{
-    background-color: rgb(144, 144, 144);
+
+.focus {
+    background-color: rgb(100, 100, 100);
 }
-.notifyApp{
+
+.notifyApp {
     background-color: rgb(58, 205, 250);
 }
-.chat{
-    height:72vh ;
+
+.chat {
+    height: 72vh;
 }
-.myOverFlow{
+
+.myOverFlow {
     overflow-y: auto;
-    max-height: 80%; 
+    max-height: 80%;
 }
+
 .myOverFlow::-webkit-scrollbar {
     display: none;
-} 
-.chatBg{
-    background: repeat center url("../img/mine.jpg") ; 
+}
+
+.chatBg {
+    background: repeat center url("../img/mine.jpg");
     height: 72vh
 }
-.myCard{
-    height: 10vh;  
+
+.myCard {
+    height: 10vh;
 }
-.h-10{
+
+.h-10 {
     height: 10%;
 }
-.fa-solid, .fa-regular{
+
+.fa-solid,
+.fa-regular {
     font-size: 30px;
-    line-height: 20px; 
+    line-height: 20px;
 }
-.fa-bell-slash{
+
+.fa-bell-slash {
     height: 50px;
     width: 50px;
     line-height: 45px;
     text-align: center;
     font-size: 27px;
     background-color: white;
-    color: rgb(58, 205, 250); 
+    color: rgb(58, 205, 250);
 }
-img{
+
+img {
     height: 7.5vh;
     width: 7.5vh;
 }
-.opened{
+
+.opened {
     background-color: rgb(58, 205, 250);
     border-radius: 17px;
 }
-span{
-    font-size:20px;
+
+span {
+    font-size: 20px;
 }
-@media screen and (min-width: 992px){
-    .under990{
-        font-size: 13px;
-       
+
+@media screen and (min-width: 992px) {
+    .under990 {
+        font-size: 11px;
+        white-space-collapse: collapse;
+
+
     }
 
 }
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
-    .myBg{
-        
-        
+    .myBg {
+
+
         padding: 0;
-        
+
     }
-    .mainApp{
-        height:100vh ;
-        flex-wrap: nowrap; 
+
+    .mainApp {
+        height: 100vh;
+        flex-wrap: nowrap;
     }
-    .chatBg{
+
+    .chatBg {
         width: 100%;
         height: 80vh;
     }
-    .chat{
-        
-         height:80% ; 
+
+    .chat {
+
+        height: 80%;
         /* da modificare */
     }
-    .notifyApp{
+
+    .notifyApp {
         font-size: 10px;
     }
-    .fa-solid, .fa-regular{
+
+    .fa-solid,
+    .fa-regular {
         font-size: 12px;
         line-height: 20px;
         padding: 0;
     }
-    .fa-bell-slash{
+
+    .fa-bell-slash {
         height: 30px;
         width: 30px;
         line-height: 25px;
-       
+
         font-size: 15px;
-      
+
     }
-    
-    .under990{
+
+    .under990 {
         font-size: 11px;
-        white-space: wrap;
-            
+        white-space-collapse: nowrap;
+
     }
-    
-  
+
+
 }
+
 @media screen and (max-width: 768px) {
-    .myBg{
-        
-        
+    .myBg {
+
+
         padding: 0;
-        
+
     }
-    .mainApp{
-        height:100vh ;
+
+    .mainApp {
+        height: 100vh;
         width: 100%;
         margin: 0;
         padding: 0;
-       
-        flex-wrap: nowrap; 
+
+        flex-wrap: nowrap;
     }
-    .chatBg{
+
+    .chatBg {
         height: 80vh;
     }
-    .chat{
-        
-         height:90vh ; 
+
+    .chat {
+
+        height: 90vh;
         /* da modificare */
     }
-    
-    .fa-solid, .fa-regular{
+
+    .fa-solid,
+    .fa-regular {
         font-size: 12px;
         line-height: 20px;
         padding: 0;
     }
-    .fa-bell-slash{
+
+    .fa-bell-slash {
         height: 30px;
         width: 30px;
         line-height: 25px;
-       
+
         font-size: 15px;
-      
+
     }
-    .under990{
-        
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 50%;
+
+    .under990 {
+
+
+        white-space-collapse: collapse;
+
     }
-    .under990{
-        font-size: 16px;
-       white-space: wrap;
-        
+
+    .chatAppResponsive {
+        position: fixed;
+        display: none;
+
     }
-  
+
+    .under990 {
+        font-size: 13px;
+        white-space: wrap;
+
+    }
 }
+
 @media screen and (max-width: 576px) {
+
     /* body {
       background-color: blue;
     } */
-    .myBg{
-        
-        
+    .myBg {
+
+
         padding: 0;
-        
+
     }
-    .mainApp{
-        height:100vh ;
+
+    .mainApp {
+        height: 100vh;
         width: 100%;
         margin: 0;
         padding: 0;
         flex-wrap: wrap;
     }
-    .chat{
-        
-        height:100% ;
+
+    .chat {
+
+        height: 100%;
         /* da modificare */
     }
-    .myOverFlow{
+
+    .myOverFlow {
         overflow-y: auto;
         /* max-height: 80%;  */
     }
+
     .myOverFlow::-webkit-scrollbar {
         display: none;
-    } 
-    .chatBg{
-        background: repeat center url("../img/mine.jpg") ; 
+    }
+
+    .chatBg {
+        background: repeat center url("../img/mine.jpg");
         height: 80vh;
-        
+
     }
-    .myCard{
-        height: 10vh; 
+
+    .myCard {
+        height: 10vh;
     }
-    .h-10{
+
+    .h-10 {
         height: 10%;
     }
-    .fa-solid, .fa-regular{
+
+    .fa-solid,
+    .fa-regular {
         font-size: 20px;
-        line-height: 20px; 
+        line-height: 20px;
     }
-    .under990{
-        font-size: 11px;
-       white-space: wrap;
-        
+
+    .under990 {
+        font-size: 10px;
+        white-space: wrap;
+
     }
-    img{
+
+    img {
         height: 7.5vh;
         width: 7.5vh;
     }
 }
+
 /* @media screen and (max-height: 560px){
     .myBg{
       
