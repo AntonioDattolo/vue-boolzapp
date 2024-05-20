@@ -161,7 +161,7 @@ span {
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 577px) and (max-width: 768px) {
     .myBg {
 
 
@@ -288,6 +288,13 @@ span {
     img {
         height: 7.5vh;
         width: 7.5vh;
+    }
+    .chatAppResponsive {
+        position: fixed;
+        top:0;
+        width: 100%;
+        display: none;
+
     }
 }
 

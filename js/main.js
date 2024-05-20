@@ -167,11 +167,11 @@ const myConfig = {
 					],
 				}
 			],
-			view: 0,
+			view: null,
 			sent : [],
 			search : '',
 			time_date_received :[],
-			time_of : []
+			time_of : [],
 		}
 	},
 	methods: {
@@ -238,13 +238,12 @@ const myConfig = {
 				console.log("array finale", this.time_date_received)
 			}
 		},
-		splitTime() {
+		splitTime(y) {
 			this.time_of = []
 
-			for (x = 0; x < this.contacts[this.view].messages.length; x++) {
-				let element = this.contacts[this.view].messages[x].date
-				let status = this.contacts[this.view].messages[x].status
-
+			for (x = 0; x < this.contacts[x].messages.length; x++) {
+				let element = this.contacts[x].messages[x].date
+				let status = this.contacts[x].messages[x].status
 				console.log(element)
 				let day_hour = element.slice(0)
 				console.log("questo è slice", day_hour)
@@ -259,8 +258,18 @@ const myConfig = {
 
 		},
 		active(){
-			console.log("cliccato")
-			return "d-block"
+			if(this.view != null){
+				console.log("ritorno d-block")
+				return "d-block"
+			}
+		},
+		back(){
+			if( this.active() == "d-block" ){
+				this.view = null
+				console.log("ritorno d-none")
+				return "d-none"
+
+			}
 		}
 			
 			
