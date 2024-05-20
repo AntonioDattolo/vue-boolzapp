@@ -12,7 +12,7 @@
 </head>
 <body >
     <div id="app" class="myBg">
-        {{splitDate()}}
+        <!-- {{splitDate()}} -->
         <main class="mainApp d-sm-flex ">
             <!-- sezione delle chat -->
             <section class="col-sm-12 col-md-5 col-xxl-4 col-12 ">
@@ -48,20 +48,22 @@
     
                     <div class="col-12 myOverFlow chat ">
                         <div v-for="person,i in filteredChat" @click.exact="chose(i),active()"
-                            class="col-12 d-flex flex-wrap justify-content-around border-bottom w-100 myCard"
+                            class="col-12 d-flex flex-wrap justify-content-start border-bottom w-100 myCard"
                             :class="opened(i)">
-                            <div class="col-2 p-2 d-flex">
+                            <div class="col-1 p-2 d-flex">
                                 <img class="rounded-circle" :src="person.avatar" alt="">
                             </div>
-                            <div class="py-lg-1 p-0 col-9 col-xxl-10">
+                            <div class="py-lg-1 offset-1 col-8 col-xxl-10">
                                 <span class="mx-3"> {{person.name}}</span>
-                                <div class="d-flex justify-content-between mx-3">
+                                <div class="d-flex col-12 justify-content-around mx-3">
                                     <span class=" col-9 col-lg-10 col-md-8  under990">
                                         {{lastElement(person.messages).message}}
                                     </span>
                                     <div>
                                         <span class="col-xxl-2 col-md-4 col-3 mx-md-3 mx-xxl-0 mx-xxl-3 text-end offset-3 fs-6">
-                                            {{this.time_date_received[i][this.time_date_received[i].length-1].time}}
+                                            <!-- {{this.time_date_received[i][this.time_date_received[i].length-1].time}} -->
+                                            <!-- senza cicli : vedi stringa sotto -->
+                                              <!-- {{this.contacts[i].messages[this.contacts[i].messages.length - 1].date.split(" ")[1].slice(0,5)}}   -->
                                         </span>
                                     </div>
                                 </div>
@@ -74,8 +76,8 @@
             <section :class.prevent.stop="active() || back()" class="col-sm-12 col-md-7 col-lg-7 col-xxl-8 rightSection chatAppResponsive">
                 <div class="w-100 ">
                     <div class="focus d-flex myCard">
-                        <template v-for="person,i in contacts">
-                            <template v-if="i == view">
+                        <template v-for="person,i in filteredChat">
+                            <template v-if="i == view"> 
                                 <div class="col-12 d-flex">
                                     <div class="col-xxl-1 col-3 d-flex justify-content-start align-items-center">
                                         <i @click="back()" class="fa-solid fa-chevron-left d-md-none"></i>
@@ -84,12 +86,14 @@
                                     <div class=" col-xxl-7 col-6 d-flex justify-content-start align-items-center ">
                                         <div class="d-flex flex-wrap text-start px-1 ">
                                             <span class="col-12 ">{{person.name}}</span>
-                                            <template v-for="msg,i in this.time_date_received">
-                                                <span class="col-12  under990" v-if="i == this.view  ">
-                                                    Ultimo accesso oggi alle
-                                                    {{this.time_date_received[i][this.time_date_received[i].length-1].time}}
-                                                </span>
-                                            </template>
+                                        
+                                            <span class="col-12  under990" v-if="i == this.view  ">
+                                                Ultimo accesso oggi alle
+                                                <!-- alternativa senza ciclo splitDate -->
+                                                <!-- {{this.contacts[this.view].messages[this.contacts[this.view].messages.length - 1].date.split(" ")[1].slice(0,5)}}   -->
+                                                {{this.time_date_received[i][this.time_date_received[i].length-1].time}}
+                                            </span>
+                                        
                                         </div>
                                     </div>
                                     <div class="col-xxl-4 col-3 d-flex justify-content-end align-items-center ">
@@ -99,29 +103,35 @@
                                     </div>
     
                                 </div>
-                            </template>
+                            </template> 
                         </template>
                     </div>
     
                     <section class=" w-100 chatBg myOverFlow " style="filter: invert(1);">
                         <div style="filter: invert(1);">
                             <!-- {{splitTime(this.view)}} -->
-                            <div class=" filter" v-for="person,i in contacts">
+                            <div class=" filter" v-for="person,i in filteredChat" >
                                 <div v-if="i == view">
-                                    <div class="p-3 px-5 w-100 d-flex " v-for="msg,i in person.messages">
-                                        <div class="  rounded" :class="check(msg.status)">
-                                            <span v:model={{i}}>
+                                    <div class="p-3 px-5 w-100 d-flex " v-for="msg,i in person.messages" @click="removeMsg(i,view)">
+                                        <div class=" col-5 col-sm-6 col-xxl-3 rounded" :class="check(msg.status)">
+                                        
+                                            <span>
                                                 {{ msg.message}}
-                                                <br>
-                                                <span style="font-size: 10px;text-align: right; "v-if="msg.status == 'sent' ">
-                                                    
-                                                    {{this.time_date_received[this.view][i].time}}
-                                                </span>
-                                                <span style="font-size: 10px;text-align: left;"v-if="msg.status == 'received' ">
-                                                    {{this.time_date_received[this.view][i].time}}
-                                                </span>
-                                                
                                             </span>
+                                            <br>
+                                            <span style="font-size: 10px;text-align: right; " v-if="msg.status == 'sent' ">
+                                        
+                                                <!-- alternativa senza ciclo splitDate -->
+                                                <!-- {{this.contacts[this.view].messages[i].date.split(" ")[1].slice(0,5)}} -->
+                                                {{this.time_date_received[this.view][i].time}}
+                                            </span>
+                                            <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received'">
+                                        
+                                                <!-- alternativa senza ciclo splitDate -->
+                                                <!-- {{this.contacts[this.view].messages[i].date.split(" ")[1].slice(0,5)}} -->
+                                                {{this.time_date_received[this.view][i].time}}
+                                            </span>
+                                        
                                         </div>
                                     </div>
                                 </div>

@@ -169,9 +169,10 @@ const myConfig = {
 			],
 			view: null,
 			sent : [],
+			remove :[],
 			search : '',
 			time_date_received :[],
-			time_of : [],
+			// time_of : [],
 		}
 	},
 	methods: {
@@ -181,14 +182,13 @@ const myConfig = {
 		 		console.log("item")
 		 		return item[i].message[i]
 			} else {
-		
 				return ""
 			}
 
 		 },
 		check(item){
 			if(item == 'sent'){
-				return   "ric text-end offset-10 nowrap"
+				return   "ric text-end offset-7 offset-sm-6 offset-xxl-9  nowrap"
 			}else{
 				return "send text-start"
 			}
@@ -208,55 +208,38 @@ const myConfig = {
 		addMsg(msg,index){
 			console.log("cliccato")
 		 	let newMsg = new Object({date: "10/01/2020 17:51:00", message : msg, status :"sent"})
-			let robot = new Object({date: "10/01/2020 17:53:00", message : "OKK!!", status :"received"})
 			this.contacts[index].messages.push(newMsg)
-			this.contacts[index].messages.push(robot)
 			console.log(this.contacts)
+			setTimeout(() => {
+				let robot = new Object({date: "10/01/2020 17:53:00", message : "OKK!!", status :"received"})
+				this.contacts[index].messages.push(robot)
+			}, 5000);
 			this.sent = ""
 		},
-		splitDate(){
-			this.time_date_received = []
-			// ciclo sull'array principale
-			for (i = 0; i < this.contacts.length; i++) {
-				let base = []
-				//ciclo su array di oggetti annidato
-				for (x = 0; x < this.contacts[i].messages.length; x++) {
-					let element = this.contacts[i].messages[x].date
-					let status = this.contacts[i].messages[x].status
-					console.log(element)
-					let day_hour = element.slice(0)
-					console.log("questo è slice", day_hour)
-					let splitSlice = day_hour.split(" ")
-					console.log("questo è lo split dello slice", splitSlice)
-					let day = splitSlice[0]
-					let hourMinuteSecond = splitSlice[1]
-					let hourMinute = hourMinuteSecond.split(":")
-					console.log("questo è lo split dell'orario ", hourMinute)
-					base.push(new Object({ date: splitSlice[0], time: hourMinute[0] + ':' + hourMinute[1], status: status }))
-				}
-				this.time_date_received.push(base)
-				console.log("array finale", this.time_date_received)
-			}
-		},
-		splitTime(y) {
-			this.time_of = []
+		
+		// non in uso////************************************************************************ */
+		// splitTime(y) {
+		// 	this.time_of = []
 
-			for (x = 0; x < this.contacts[x].messages.length; x++) {
-				let element = this.contacts[x].messages[x].date
-				let status = this.contacts[x].messages[x].status
-				console.log(element)
-				let day_hour = element.slice(0)
-				console.log("questo è slice", day_hour)
-				let splitSlice = day_hour.split(" ")
-				let day = splitSlice[0]
-				let hour = splitSlice[1]
-				let hourMinuteSecond = splitSlice[1]
-				let hourMinute = hourMinuteSecond.split(":")
-				this.time_of.push(new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status }))
-				console.log("questo è il push dei ricevuti", this.time_of)
-			}
-
-		},
+		// 	for (x = 0; x < this.contacts[x].messages.length; x++) {
+		// 		let element = this.contacts[x].messages[x].date
+		// 		let status = this.contacts[x].messages[x].status
+		// 		console.log(element)
+		// 		let day_hour = element.slice(0)
+		// 		console.log("questo è slice", day_hour)
+		// 		let splitSlice = day_hour.split(" ")
+		// 		let day = splitSlice[0]
+		// 		let hour = splitSlice[1]
+		// 		let hourMinuteSecond = splitSlice[1]
+		// 		let hourMinute = hourMinuteSecond.split(":")
+		// 		// this.time_of.push(new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status }))
+		// 		// this.time_of.push(nome : [new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status })] )
+		// 		console.log("questo è il push dei ricevuti", this.time_of)
+		// 	}
+		// }
+		// non in uso //*************************************************************************** */
+		//,
+		/////app Responsive per Smartphone/Tablet fino a 768px/////
 		active(){
 			if(this.view != null){
 				console.log("ritorno d-block")
@@ -268,31 +251,50 @@ const myConfig = {
 				this.view = null
 				console.log("ritorno d-none")
 				return "d-none"
-
 			}
-		}
-			
-			
-
-		
-
-
-
-		
-		
-		
-	
-		
+		},
+		removeMsg(index,view){
+			console.log("cliccato remove")
+				delete this.contacts[view].messages[index].message
+				delete this.contacts[view].messages[index].status
+				delete this.contacts[view].messages[index].date
+		}, 
 	},
 	computed :{
 		filteredChat : function(){
-			return this.contacts.filter((contacts)=>{
+			return this.contacts.filter((contacts) => {
+				contacts.name.match(this.search)
 				return contacts.name.match(this.search)
 			})
 		},
-
+		
 	},
 	mounted(){
+		splitDate= 
+			this.time_date_received = []
+			// ciclo sull'array principale
+			for (i = 0; i < this.contacts.length; i++) {
+				let base = []
+				//ciclo su array di oggetti annidato
+				for (x = 0; x < this.contacts[i].messages.length; x++) {
+					let element = this.contacts[i].messages[x].date
+					let status = this.contacts[i].messages[x].status
+					// console.log(element)
+					let day_hour = element.slice(0)
+					// console.log("questo è slice", day_hour)
+				   let splitSlice = day_hour.split(" ")
+					// console.log("questo è lo split dello slice", splitSlice)
+				let day = splitSlice[0]
+					let hourMinuteSecond = splitSlice[1]
+					let hourMinute = hourMinuteSecond.split(":")
+					// console.log("questo è lo split dell'orario ", hourMinute)
+					base.push(new Object({ date: splitSlice[0], time: hourMinute[0] + ':' + hourMinute[1], status: status }))
+				}
+				this.time_date_received.push(base)
+				// console.log("array finale", this.time_date_received)
+			}
+	   
+		
 		window.vue = this
 	}
 };

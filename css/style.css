@@ -296,6 +296,9 @@ span {
         display: none;
 
     }
+    span {
+        font-size: 15px;
+    }
 }
 
 /* @media screen and (max-height: 560px){
