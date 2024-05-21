@@ -5,13 +5,13 @@
 
 .send {
     background-color: rgb(144, 144, 144);
-    padding: 0.4rem 0.3rem;
+    /* padding: 0.4rem 0.3rem; */
 
 }
 
-.ric {
+.received {
     background-color: lightgreen;
-    padding: 0.4rem 0.3rem;
+    /* padding: 0.4rem 0.3rem; */
     white-space-collapse: nowrap;
 
 }
@@ -97,6 +97,9 @@ img {
 span {
     font-size: 20px;
 }
+.myDropDown{
+    color: rgb(238, 238, 238)
+}
 
 @media screen and (min-width: 992px) {
     .under990 {
@@ -153,7 +156,7 @@ span {
     }
 
     .under990 {
-        font-size: 11px;
+        font-size: 9px;
         white-space-collapse: nowrap;
 
     }
@@ -301,7 +304,7 @@ span {
     }
 }
 
-/* @media screen and (max-height: 560px){
+@media screen and (max-height: 800px){
     .myBg{
       
         height: 100vh; 
@@ -320,8 +323,10 @@ span {
         height: 30px;
         width: 30px;
         line-height: 25px;
+        margin-top: 0;
     }
     span{
-        font-size:10px;
+        font-size:8.5px;
     }
-} */
+} 
+

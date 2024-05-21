@@ -8,28 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>#####</title>
 </head>
 <body >
     <div id="app" class="myBg">
-        <!-- {{splitDate()}} -->
+        {{splitDate()}}
         <main class="mainApp d-sm-flex ">
             <!-- sezione delle chat -->
-            <section class="col-sm-12 col-md-5 col-xxl-4 col-12 ">
-                <div class=" col-12 focus d-flex myCard align-items-center">
-                    <div class="col-2 p-1 ">
-                        <img class="rounded-circle p-1 " src="./img/avatar_io.jpg" alt="">
+            <section class="col-sm-12 col-md-5 col-xxl-4 col-12">
+                <div class="col-12 focus d-flex myCard align-items-center">
+                    <div class="col-2 p-1">
+                        <img class="rounded-circle p-1" src="./img/avatar_io.jpg" alt="">
                     </div>
-                    <span class="col-6 p-2 ">Moons
-                    </span>
-                    <div class="col-4 d-flex justify-self-end text-end ">
-                        <i class="fa-solid fa-circle-notch  col-2 mx-2"></i>
-                        <i class="fa-solid fa-message  col-2 mx-2"></i>
-                        <i class="fa-solid fa-ellipsis-vertical  col-2 mx-2"></i>
+                    <span class="col-6 p-2 ">Moons</span>
+                    <div class="col-4 d-flex justify-self-end text-end">
+                        <i class="fa-solid fa-circle-notch col-2 mx-2"></i>
+                        <i class="fa-solid fa-message col-2 mx-2"></i>
+                        <i class="fa-solid fa-ellipsis-vertical col-2 mx-2"></i>
                     </div>
                 </div>
-                <div class=" col-12 p-1 d-md-flex d-none notifyApp myCard">
-                    <i class="fa-solid fa-bell-slash mt-md-3 col-2 rounded-circle p-1"></i>
+                <div class="col-12 p-2 d-md-flex d-none notifyApp myCard">
+                    <i class="fa-solid fa-bell-slash col-2 rounded-circle p-1"></i>
                     <div class="col-12  col-10 px-3">
                         <span class="p-1 p-md-0 d-block">Ricevi notifiche di nuovi messaggi</span>
                         <a class="p-1 p-md-0" href="#">Attiva notifiche desktop</a>
@@ -37,16 +37,15 @@
                 </div>
                 <div class=" col-12 d-flex flex-wrap chat p-1 w-100 align-items-center">
                     <div class="col-12 p-1">
-                        <div class="input-group input-group-sm mb-3 ">
+                        <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
-                                <span style="opacity: .8; background:none; border: none; " class="input-group-text"
-                                    id="inputGroup-sizing-sm"><i style="color:white" class="fa-solid fa-magnifying-glass"></i></span>
+                                <span style="opacity: .8; background:none; border: none; " class="input-group-text" id="inputGroup-sizing-sm"><i style="color:white" class="fa-solid fa-magnifying-glass"></i></span>
                             </div>
                             <input style="opacity: .6;" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="search" onKeyUp="this.value=this.value.substr(0,1).toUpperCase()+this.value.substr(1,this.value.length).toLowerCase();">
                         </div>
                     </div>
     
-                    <div class="col-12 myOverFlow chat ">
+                    <div class="col-12 myOverFlow chat">
                         <div v-for="person,i in filteredChat" @click.exact="chose(i),active()"
                             class="col-12 d-flex flex-wrap justify-content-start border-bottom w-100 myCard"
                             :class="opened(i)">
@@ -61,7 +60,7 @@
                                     </span>
                                     <div>
                                         <span class="col-xxl-2 col-md-4 col-3 mx-md-3 mx-xxl-0 mx-xxl-3 text-end offset-3 fs-6">
-                                            <!-- {{this.time_date_received[i][this.time_date_received[i].length-1].time}} -->
+                                             {{this.time_date_received[i][this.time_date_received[i].length-1].time}}
                                             <!-- senza cicli : vedi stringa sotto -->
                                               <!-- {{this.contacts[i].messages[this.contacts[i].messages.length - 1].date.split(" ")[1].slice(0,5)}}   -->
                                         </span>
@@ -74,7 +73,7 @@
             </section>
             <!-- sezione chat aperta(on focus) d-none d-md-block -->
             <section :class.prevent.stop="active() || back()" class="col-sm-12 col-md-7 col-lg-7 col-xxl-8 rightSection chatAppResponsive">
-                <div class="w-100 ">
+                <div class="w-100">
                     <div class="focus d-flex myCard">
                         <template v-for="person,i in filteredChat">
                             <template v-if="i == view"> 
@@ -83,11 +82,11 @@
                                         <i @click="back()" class="fa-solid fa-chevron-left d-md-none"></i>
                                         <img class="rounded-circle p-1" :src="person.avatar" alt="">
                                     </div>
-                                    <div class=" col-xxl-7 col-6 d-flex justify-content-start align-items-center ">
+                                    <div class="col-xxl-7 col-6 d-flex justify-content-start align-items-center">
                                         <div class="d-flex flex-wrap text-start px-1 ">
                                             <span class="col-12 ">{{person.name}}</span>
                                         
-                                            <span class="col-12  under990" v-if="i == this.view  ">
+                                            <span class="col-12 under990" v-if="i == this.view">
                                                 Ultimo accesso oggi alle
                                                 <!-- alternativa senza ciclo splitDate -->
                                                 <!-- {{this.contacts[this.view].messages[this.contacts[this.view].messages.length - 1].date.split(" ")[1].slice(0,5)}}   -->
@@ -96,7 +95,7 @@
                                         
                                         </div>
                                     </div>
-                                    <div class="col-xxl-4 col-3 d-flex justify-content-end align-items-center ">
+                                    <div class="col-xxl-4 col-3 d-flex justify-content-end align-items-center">
                                         <i class="fa-solid fa-magnifying-glass  col-1 p-2 mx-2"></i>
                                         <i class="fa-solid fa-paperclip  col-1 p-2 mx-2"></i>
                                         <i class="fa-solid fa-ellipsis-vertical  col-1 p-2 mx-2"></i>
@@ -107,31 +106,43 @@
                         </template>
                     </div>
     
-                    <section class=" w-100 chatBg myOverFlow " style="filter: invert(1);">
+                    <section class="w-100 chatBg myOverFlow" style="filter: invert(1);">
                         <div style="filter: invert(1);">
                             <!-- {{splitTime(this.view)}} -->
-                            <div class=" filter" v-for="person,i in filteredChat" >
+                            <div class=" filter" v-for="person,i in filteredChat">
                                 <div v-if="i == view">
-                                    <div class="p-3 px-5 w-100 d-flex " v-for="msg,i in person.messages" @click="removeMsg(i,view)">
-                                        <div class=" col-5 col-sm-6 col-xxl-3 rounded" :class="check(msg.status)">
-                                        
+                                    <div class="p-3 px-5 w-100 d-flex" v-for="msg,i in person.messages">
+                                        <div class="col-5 col-sm-6 col-xxl-3 rounded" :class="check(msg.status)">
                                             <span>
-                                                {{ msg.message}}
+                                                {{msg.message}}
                                             </span>
-                                            <br>
-                                            <span style="font-size: 10px;text-align: right; " v-if="msg.status == 'sent' ">
-                                        
+                                            <div style="font-size: 10px;text-align: right; " v-if="msg.status == 'sent' ">
                                                 <!-- alternativa senza ciclo splitDate -->
                                                 <!-- {{this.contacts[this.view].messages[i].date.split(" ")[1].slice(0,5)}} -->
                                                 {{this.time_date_received[this.view][i].time}}
-                                            </span>
-                                            <span style="font-size: 10px;text-align: left;" v-if="msg.status == 'received'">
-                                        
+                                                <div class="dropdown d-inline">
+                                                    <button class="dropdown-toggle border-0 bg-transparent" style="color:whitesmoke" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                    <ul class="dropdown-menu focus">
+                                                        <li ><a class="dropdown-item myDropDown" href="#">Info Message</a></li>
+                                                        <li @click="removeMsg(i,view)"><a class="dropdown-item myDropDown" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                    
+                                            </div>
+                                            <div style="font-size: 10px;text-align: left;" v-if="msg.status == 'received'">
                                                 <!-- alternativa senza ciclo splitDate -->
                                                 <!-- {{this.contacts[this.view].messages[i].date.split(" ")[1].slice(0,5)}} -->
                                                 {{this.time_date_received[this.view][i].time}}
-                                            </span>
-                                        
+                                                <div class="dropdown d-inline">
+                                                    <button class="dropdown-toggle border-0 bg-transparent" style="color:whitesmoke" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                    <ul class="dropdown-menu focus">
+                                                        <li><a class="dropdown-item myDropDown" href="#">Info Message</a></li>
+                                                        <li @click="removeMsg(i,view)"><a class="dropdown-item myDropDown" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                    
+                                            </div>
+                    
                                         </div>
                                     </div>
                                 </div>
@@ -146,10 +157,8 @@
                             </span>
                         </div>
                         <div class=" input-group mt-1 w-75 h-50 rounded d-flex">
-                            <input style="opacity: .6;" type="text" class="form-control" aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm" v-model="sent">
-                            <span class="input-group-text  col-1  notifyApp d-flex justify-content-center"
-                                id="inputGroup-sizing-sm">
+                            <input style="opacity: .6;" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="sent" @keyup.enter="addMsg(sent,view)">
+                            <span class="input-group-text  col-1  notifyApp d-flex justify-content-center" id="inputGroup-sizing-sm">
                                 <i class="fa-sharp fa-solid fa-paper-plane" @click="addMsg(sent,view)"></i>
                             </span>
                         </div>

@@ -188,7 +188,7 @@ const myConfig = {
 		 },
 		check(item){
 			if(item == 'sent'){
-				return   "ric text-end offset-7 offset-sm-6 offset-xxl-9  nowrap"
+				return   "received text-end offset-7 offset-sm-6 offset-xxl-9  nowrap"
 			}else{
 				return "send text-start"
 			}
@@ -216,29 +216,30 @@ const myConfig = {
 			}, 5000);
 			this.sent = ""
 		},
-		
-		// non in uso////************************************************************************ */
-		// splitTime(y) {
-		// 	this.time_of = []
-
-		// 	for (x = 0; x < this.contacts[x].messages.length; x++) {
-		// 		let element = this.contacts[x].messages[x].date
-		// 		let status = this.contacts[x].messages[x].status
-		// 		console.log(element)
-		// 		let day_hour = element.slice(0)
-		// 		console.log("questo è slice", day_hour)
-		// 		let splitSlice = day_hour.split(" ")
-		// 		let day = splitSlice[0]
-		// 		let hour = splitSlice[1]
-		// 		let hourMinuteSecond = splitSlice[1]
-		// 		let hourMinute = hourMinuteSecond.split(":")
-		// 		// this.time_of.push(new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status }))
-		// 		// this.time_of.push(nome : [new Object({ time: hourMinute[0] + ':' + hourMinute[1], status: status })] )
-		// 		console.log("questo è il push dei ricevuti", this.time_of)
-		// 	}
-		// }
-		// non in uso //*************************************************************************** */
-		//,
+		splitDate() {
+			this.time_date_received = []
+			// ciclo sull'array principale
+			for (i = 0; i < this.contacts.length; i++) {
+				let base = []
+				//ciclo su array di oggetti annidato
+				for (x = 0; x < this.contacts[i].messages.length; x++) {
+					let element = this.contacts[i].messages[x].date
+					let status = this.contacts[i].messages[x].status
+					// console.log(element)
+					let day_hour = element.slice(0)
+					// console.log("questo è slice", day_hour)
+					let splitSlice = day_hour.split(" ")
+					// console.log("questo è lo split dello slice", splitSlice)
+					let day = splitSlice[0]
+					let hourMinuteSecond = splitSlice[1]
+					let hourMinute = hourMinuteSecond.split(":")
+					// console.log("questo è lo split dell'orario ", hourMinute)
+					base.push(new Object({ date: splitSlice[0], time: hourMinute[0] + ':' + hourMinute[1], status: status }))
+				}
+				this.time_date_received.push(base)
+				// console.log("array finale", this.time_date_received)
+			}
+		},
 		/////app Responsive per Smartphone/Tablet fino a 768px/////
 		active(){
 			if(this.view != null){
@@ -255,9 +256,12 @@ const myConfig = {
 		},
 		removeMsg(index,view){
 			console.log("cliccato remove")
-				delete this.contacts[view].messages[index].message
-				delete this.contacts[view].messages[index].status
-				delete this.contacts[view].messages[index].date
+			console.log(view)
+				// delete this.time_date_received[this.view]
+				// delete this.time_date_received[this.view]
+				// delete this.time_date_received[this.view]
+				delete this.contacts[this.view].messages[index].message
+				delete this.contacts[this.view].messages[index].status
 		}, 
 	},
 	computed :{
@@ -270,29 +274,6 @@ const myConfig = {
 		
 	},
 	mounted(){
-		splitDate= 
-			this.time_date_received = []
-			// ciclo sull'array principale
-			for (i = 0; i < this.contacts.length; i++) {
-				let base = []
-				//ciclo su array di oggetti annidato
-				for (x = 0; x < this.contacts[i].messages.length; x++) {
-					let element = this.contacts[i].messages[x].date
-					let status = this.contacts[i].messages[x].status
-					// console.log(element)
-					let day_hour = element.slice(0)
-					// console.log("questo è slice", day_hour)
-				   let splitSlice = day_hour.split(" ")
-					// console.log("questo è lo split dello slice", splitSlice)
-				let day = splitSlice[0]
-					let hourMinuteSecond = splitSlice[1]
-					let hourMinute = hourMinuteSecond.split(":")
-					// console.log("questo è lo split dell'orario ", hourMinute)
-					base.push(new Object({ date: splitSlice[0], time: hourMinute[0] + ':' + hourMinute[1], status: status }))
-				}
-				this.time_date_received.push(base)
-				// console.log("array finale", this.time_date_received)
-			}
 	   
 		
 		window.vue = this
